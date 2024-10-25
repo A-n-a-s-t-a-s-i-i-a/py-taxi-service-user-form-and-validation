@@ -30,6 +30,7 @@ def index(request):
 
     return render(request, "taxi/index.html", context=context)
 
+
 @login_required
 def assign_driver(request, pk):
     car = get_object_or_404(Car, pk=pk)
@@ -39,7 +40,7 @@ def assign_driver(request, pk):
         car.drivers.remove(user)
     else:
         car.drivers.add(user)
-    return redirect('taxi:car-detail', pk=car.id)
+    return redirect("taxi:car-detail", pk=car.id)
 
 
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):
